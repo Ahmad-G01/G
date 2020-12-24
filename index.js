@@ -470,12 +470,12 @@ async function starts() {
 						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
 						buff = await client.downloadMediaMessage(encmedia)
 						for (let _ of anu) {
-							client.sendMessage(_.jid, buff, image, {caption: `[ Ini Broadcast ]\n\n${body.slice(4)}`})
+							client.sendMessage(_.jid, buff, image, {caption: `[ Gustian Bot ]\n\n${body.slice(4)}`})
 						}
 						reply('Suksess broadcast')
 					} else {
 						for (let _ of anu) {
-							sendMess(_.jid, `[ Ini Broadcast ]\n\n${body.slice(4)}`)
+							sendMess(_.jid, `[ Gustian Bot ]\n\n${body.slice(4)}`)
 						}
 						reply('Suksess broadcast')
 					}
@@ -560,26 +560,26 @@ async function starts() {
 						reply('1 untuk mengaktifkan, 0 untuk menonaktifkan')
 					}
 					break
-              case 'setpp':
-            if(!isOwner) return client.reply(from, 'Perintah ini hanya untuk Owner!', id)
-            const isqwtimg1 = quotedMsg && quotedMsg.type === 'image'
+                                          case 'setpp':
+                                            if(!isOwner) return client.reply(from, 'Perintah ini hanya untuk Owner!', id)
+                                            const isqwtimg1 = quotedMsg && quotedMsg.type === 'image'
 			if (isMedia && type == 'image' || isqwtimg1) {
 				const dataMedia = isqwtimg1 ? quotedMsg : message
 				const _mimetypee = dataMedia.mimetype
 				const mediaData = await decryptMedia(dataMedia, uaOverride)
 				const imageBase64 = `data:${_mimetypee};base64,${mediaData.toString('base64')}`
-                await client.setProfilePic(imageBase64)
-                await client.reply(from, 'Berhasil mengubah foto profile!', id)
-            }
-            break
-      case 'clearall':
-            if (!isOwner) return client.reply(from, 'Perintah ini hanya untuk Owner bot', id)
-            const allChatz = await client.getAllChats()
-            for (let dchat of allChatz) {
-                await client.deleteChat(dchat.id)
-            }
-            client.reply(from, 'Succes clear all chat!', id)
-            break
+                                await client.setProfilePic(imageBase64)
+                                await client.reply(from, 'Berhasil mengubah foto profile!', id)
+                                }
+                                break
+                                 case'clearall':
+                                 if (!isOwner) return client.reply(from, 'Perintah ini hanya untuk Owner bot', id)
+                                   const allChatz = await client.getAllChats()
+                                     for (let dchat of allChatz) {
+                                   await client.deleteChat(dchat.id)
+                                   }  
+                                client.reply(from, 'Succes clear all chat!', id)
+                             break
 				case 'welcome':
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
@@ -667,25 +667,7 @@ async function starts() {
             let wal = wall[Math.floor(Math.random() * wall.length)]
             client.sendFileFromUrl(from, wal, 'wall.jpg', 'Wallpapernya kakak')
             break
-       case 'join':
-            //return client.reply(from, 'Jika ingin meng-invite bot ke group anda, silahkan izin ke wa.me/6282137409151', id)
-            if (args.length < 2) return client.reply(from, 'Kirim perintah *!join linkgroup kunci*\n\nEx:\n!join https://chat.whatsapp.com/blablablablablabla abcde\nuntuk kunci kamu bisa mendapatkannya hanya dengan chat owner ketik !owner', id)
-            const link = args[1]
-            const key = args[2]
-            const tGr = await client.getAllGroups()
-            const minMem = 100
-            const isLink = link.match(/(https:\/\/chat.whatsapp.com)/gi)
-            if (key !== '120203') return client.reply(from, '*kunci* salah! silahkan chat owner bot unruk mendapatkan key yang valid', id)
-            const check = await client.inviteInfo(link)
-            if (!isLink) return client.reply(from, 'Ini link? 👊🤬', id)
-            if (tGr.length > 5) return client.reply(from, 'Maaf jumlah group sudah maksimal!', id)
-            if (check.size < minMem) return client.reply(from, 'Member group tidak melebihi 100, bot tidak bisa masuk', id)
-            if (check.status === 200) {
-                await client.joinGroupViaLink(link).then(() => client.reply(from, 'Done!'))
-            } else {
-                client.reply(from, 'Link group tidak valid!', id)
-            }
-            break
+        
 				case 'wait':
 					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
 						reply(mess.wait)
