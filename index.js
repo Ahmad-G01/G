@@ -627,7 +627,7 @@ async function starts() {
 						reply('Gagal om')
 					}
 					break
- if (text.includes("setname")){
+ if (text.includes(".setname")){
 const teks = text.replace(/.setname /, "")
     let nama = `${teks}`;
     let idgrup = `${id.split("@s.whatsapp.net")[0]}`;
@@ -635,7 +635,7 @@ const teks = text.replace(/.setname /, "")
 conn.sendMessage(id, 'Succes Change Name Group' ,MessageType.text, { quoted: m } );
 
 }
-if (text.includes("setdesc")){
+if (text.includes(".setdesc")){
 const teks = text.replace(/.setdesc /, "")
     let desk = `${teks}`;
     let idgrup = `${id.split("@s.whatsapp.net")[0]}`;
@@ -643,12 +643,12 @@ const teks = text.replace(/.setdesc /, "")
 conn.sendMessage(id, 'Succes Change Description Group' ,MessageType.text, { quoted: m } );
 
 }
-else if (text == 'opengc'){
+else if (text == '.opengc'){
 let hasil = `${id.split("@s.whatsapp.net")[0]}`;
    conn.groupSettingChange (hasil, GroupSettingChange.messageSend, false);
 conn.sendMessage(id, 'SUCCES, GRUP TELAH DIBUKA' ,MessageType.text, { quoted: m } );
 }
-else if (text == 'closegc'){
+else if (text == '.closegc'){
  let hasil = `${id.split("@s.whatsapp.net")[0]}`;
    conn.groupSettingChange (hasil, GroupSettingChange.messageSend, true);
 conn.sendMessage(id, 'SUCCES, GRUP TELAH DITUTUP' ,MessageType.text, { quoted: m } );
