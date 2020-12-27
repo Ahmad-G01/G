@@ -58,7 +58,7 @@ const help = (prefix) => {
  *${prefix}unblock*
  *${prefix}clearall*
 
- GUSTIAN BOT 
+ *GUSTIAN BOT* 
 }
 
 exports.help = help
