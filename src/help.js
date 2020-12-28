@@ -100,7 +100,7 @@ desc : activate simi mode in the group
 usage : *${prefix}simih 1* to activate simi mode and *${prefix}simih 0* to deactivate simi mode
 note : This command can be used if you are a group admin\n`
 
-< *Owner Commands* >
+> *Owner Commands* <
 
 command : *${prefix}clone [tag]*\n
 
@@ -112,7 +112,7 @@ command : *${prefix}setprefix*\n
 
 command : *${prefix}bc*\n
 
-< *Spesial Commands* >
+> *Spesial Commands* <
 
 command : *#owner*\n
 
